@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Clock</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #f1f5f9;
+      font-family: Arial, sans-serif;
+    }
+
+    .clock {
+      position: relative;
+      width: min(80vw, 320px);
+      aspect-ratio: 1;
+      border: 8px solid #1e293b;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #1e293b 0 6px, transparent 7px),
+        repeating-conic-gradient(
+          from -1deg,
+          #334155 0deg 2deg,
+          transparent 2deg 30deg
+        ),
+        #fff;
+      box-shadow: 0 12px 30px rgb(15 23 42 / 15%);
+    }
+
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      border-radius: 999px;
+      transform-origin: 50% 100%;
+    }
+
+    .hour-hand {
+      width: 8px;
+      height: 25%;
+      margin-left: -4px;
+      background: #1e293b;
+      animation: rotate 43200s linear infinite;
+    }
+
+    .minute-hand {
+      width: 5px;
+      height: 36%;
+      margin-left: -2.5px;
+      background: #475569;
+      animation: rotate 3600s linear infinite;
+    }
+
+    .second-hand {
+      width: 2px;
+      height: 41%;
+      margin-left: -1px;
+      background: #ef4444;
+      animation: rotate 60s steps(60, end) infinite;
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="clock" role="img" aria-label="Animated analog clock">
+    <span class="hand hour-hand"></span>
+    <span class="hand minute-hand"></span>
+    <span class="hand second-hand"></span>
+  </main>
+</body>
+</html>
